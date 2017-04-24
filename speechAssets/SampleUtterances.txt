@@ -1,8 +1,8 @@
-AddItem add {Item}
 AddItem I have a {Item}
 AddItem I have an {Item}
-AddItem I bought a {Item}
-AddItem I bought an {Item}
+AddItem I now have {Quantity} {Item}
+AddItem I am down to {Quantity} {Item}
+AddItem My number of {Item} is now {Quantity}
 
 QueryItem How many {Item} do I have
 QueryItem How much {Item} do I have
@@ -11,6 +11,7 @@ QueryItem Do I have any {Item}
 QueryItem Do I have any of my {Item} left
 QueryItem Do I have any {Item} left
 QueryItem Do I have {Item}
+QueryItem Do I still have {Item}
 QueryItem Are any {Item} left
 QueryItem Are there any {Item} left
 QueryItem Do I have a {Item}
@@ -19,6 +20,10 @@ QueryItem Am I out of {Item}
 QueryItem Is there any {Item} left
 QueryItem Tell me if I have a {Item}
 QueryItem Tell me if I have an {Item}
+QueryItem If I have any {Item}
+QueryItem How many {Item} I have
+QueryItem If I am out of {Item}
+QueryItem If I still have {Item}
 
 RemoveItem Remove {Item}
 RemoveItem Remove my {Item}
@@ -28,12 +33,62 @@ RemoveItem There is no {Item} left
 RemoveItem There are no {Item} left
 RemoveItem I do not have any {Item}
 
+IncrementQuantity I just got {Quantity} {Item}
+IncrementQuantity I just got {Quantity} {Item} at the store
+IncrementQuantity I bought {Quantity} {Item}
+IncrementQuantity I bought {Quantity} {Item} at the store
+IncrementQuantity I bought an {Item}
+IncrementQuantity I bought an {Item} at the store
+IncrementQuantity I bought a {Item}
+IncrementQuantity I bought a {Item} at the store
+IncrementQuantity Add {Quantity} {Item}
+
+DecrementQuantity Remove {Quantity} {Item}
+DecrementQuantity I lost {Quantity} {Item}
+DecrementQuantity I used {Quantity} {Item}
+
 QueryLocation Where is the {Item}
 QueryLocation Where is my {Item}
+QueryLocation Where my {Item} is
+QueryLocation Where the {Item} is
 QueryLocation Where are the {Item}
-QueryLocation Where are my {Item}
+QueryLocation Where are my {Item
+QueryLocation Where my {Item} are
+QueryLocation Where the {Item} is
 QueryLocation Where did I put my {Item}
 QueryLocation Where did I put the {Item}
+
+QueryCreateTime When did I get {Item}
+QueryCreateTime How many days ago did I get {Item}
+QueryCreateTime How long ago did I get {Item}
+QueryCreateTime When did I get my {Item}
+QueryCreateTime How many days ago did I get my {Item}
+QueryCreateTime How long ago did I get my {Item}
+QueryCreateTime When did I get the {Item}
+QueryCreateTime How many days ago did I get the {Item}
+QueryCreateTime How long ago did I get the {Item}
+QueryCreateTime When did I buy {Item}
+QueryCreateTime How many days ago did I buy {Item}
+QueryCreateTime How long ago did I buy {Item}
+QueryCreateTime When did I buy my {Item}
+QueryCreateTime How many days ago did I buy my {Item}
+QueryCreateTime How long ago did I buy my {Item}
+QueryCreateTime When did I buy the {Item}
+QueryCreateTime How many days ago did I buy the {Item}
+QueryCreateTime How long ago did I buy the {Item}
+QueryCreateTime When did I purchase {Item}
+QueryCreateTime How many days ago did I purchase {Item}
+QueryCreateTime How long ago did I purchase {Item}
+QueryCreateTime When did I purchase my {Item}
+QueryCreateTime How many days ago did I purchase my {Item}
+QueryCreateTime How long ago did I purchase my {Item}
+QueryCreateTime When did I purchase the {Item}
+QueryCreateTime How many days ago did I purchase the {Item}
+QueryCreateTime How long ago did I purchase the {Item}
+QueryCreateTime When I bought {Item}
+QueryCreateTime When I got {Item}
+QueryCreateTime How long ago I bought {Item}
+QueryCreateTime How long ago I got {Item}
 
 UpdateLocation I moved my {Item} to {Location}
 UpdateLocation I switched my {Item} to {Location}

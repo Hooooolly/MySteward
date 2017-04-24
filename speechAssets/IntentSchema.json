@@ -22,6 +22,32 @@
       	]
     },
     {
+      	"intent": "IncrementQuantity",
+      	"slots": [
+      	    {
+      		      "name": "Item",
+      		      "type": "LIST_OF_ITEMS"
+      	    }
+            {
+                "name": "Quantity",
+                "type": "AMAZON.NUMBER"
+            }
+      	]
+    },
+    {
+      	"intent": "DecrementQuantity",
+      	"slots": [
+      	    {
+      		      "name": "Item",
+      		      "type": "LIST_OF_ITEMS"
+      	    }
+            {
+                "name": "Quantity",
+                "type": "AMAZON.NUMBER"
+            }
+      	]
+    },
+    {
         "intent": "QueryLocation",
         "slots": [
             {
@@ -42,9 +68,18 @@
                 "type": "LOCATION"
             }
         ]
-    },    
+    },
     {
         "intent": "RemoveItem",
+        "slots": [
+            {
+                "name" : "Item",
+                "type": "LIST_OF_ITEMS"
+            }
+        ]
+    },
+	{
+        "intent": "QueryCreateTime",
         "slots": [
             {
                 "name" : "Item",

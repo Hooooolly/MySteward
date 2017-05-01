@@ -1,0 +1,1400 @@
+{
+  "intents": [
+    {
+      "name": "AddItem",
+      "samples": [
+        "I have a {Item}",
+        "I have an {Item}",
+        "I now have {Quantity} {Item}",
+        "I am down to {Quantity} {Item}",
+        "My number of {Item} is now {Quantity}"
+      ],
+      "slots": [
+        {
+          "name": "Item",
+          "type": "LIST_OF_ITEMS",
+          "samples": [
+            "{Item}",
+            "It was {Item}"
+          ]
+        },
+        {
+          "name": "Quantity",
+          "type": "AMAZON.NUMBER",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.RepeatIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "DecrementQuantity",
+      "samples": [
+        "Remove {Quantity} {Item}",
+        "I lost {Quantity} {Item}",
+        "I used {Quantity} {Item}"
+      ],
+      "slots": [
+        {
+          "name": "Item",
+          "type": "LIST_OF_ITEMS",
+          "samples": []
+        },
+        {
+          "name": "Quantity",
+          "type": "AMAZON.NUMBER",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "IncrementQuantity",
+      "samples": [
+        "I just got {Quantity} {Item}",
+        "I bought {Quantity} {Item}",
+        "I bought an {Item}",
+        "I bought a {Item}",
+        "Add {Quantity} {Item}"
+      ],
+      "slots": [
+        {
+          "name": "Item",
+          "type": "LIST_OF_ITEMS",
+          "samples": []
+        },
+        {
+          "name": "Quantity",
+          "type": "AMAZON.NUMBER",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "QueryCreateTime",
+      "samples": [
+        "When did I get {Item}",
+        "How many days ago did I get {Item}",
+        "When did I get my {Item}",
+        "How many days ago did I get my {Item}",
+        "How long ago did I get my {Item}",
+        "When did I get the {Item}",
+        "How many days ago did I get the {Item}",
+        "How long ago did I get the {Item}",
+        "When did I buy {Item}",
+        "How many days ago did I buy {Item}",
+        "How long ago did I buy {Item}",
+        "How long ago did I buy my {Item}",
+        "How many days ago did I buy my {Item}",
+        "How long ago did I buy the {Item}",
+        "How many days ago did I buy the {Item}",
+        "When did I purchase {Item}",
+        "How long ago did I purchase {Item}",
+        "How many days ago did I purchase {Item}",
+        "When did I purchase my {Item}",
+        "When did I purchase the {Item}",
+        "How long ago did I purchase my {Item}",
+        "How many days ago did I purchase my {Item}",
+        "How many days ago did I purchase the {Item}",
+        "How long ago did I purchase the {Item}",
+        "When I bought {Item}",
+        "When I got {Item}",
+        "How long ago I bought {Item}",
+        "How long ago I got {Item}"
+      ],
+      "slots": [
+        {
+          "name": "Item",
+          "type": "LIST_OF_ITEMS",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "QueryItem",
+      "samples": [
+        "How many {Item} do I have",
+        "How much {Item} do I have",
+        "How much {Item} do I have left",
+        "Do I have any {Item}",
+        "Do I have any of my {Item} left",
+        "Do I have any {Item} left",
+        "Do I have {Item}",
+        "Are any {Item} left",
+        "Are there any {Item} left",
+        "Do I have a {Item}",
+        "Do I have an {Item}",
+        "Am I out of {Item}",
+        "Is there any {Item} left",
+        "Tell me if I have a {Item}",
+        "Tell me if I have an {Item}"
+      ],
+      "slots": [
+        {
+          "name": "Item",
+          "type": "LIST_OF_ITEMS",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "QueryLocation",
+      "samples": [
+        "Where is the {Item}",
+        "Where is my {Item}",
+        "Where are the {Item}",
+        "Where are my {Item}",
+        "Where did I put my {Item}",
+        "Where did I put the {Item}"
+      ],
+      "slots": [
+        {
+          "name": "Item",
+          "type": "LIST_OF_ITEMS",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "RemoveItem",
+      "samples": [
+        "Remove {Item}",
+        "Remove my {Item}",
+        "I am out of {Item}",
+        "I ran out of {Item}",
+        "There is no {Item} left",
+        "There are no {Item} left",
+        "I do not have any {Item}"
+      ],
+      "slots": [
+        {
+          "name": "Item",
+          "type": "LIST_OF_ITEMS",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "UpdateLocation",
+      "samples": [
+        "I moved my {Item} to {Location}",
+        "I switched my {Item} is now {Location}",
+        "Changed the location of {Item} to {Location}",
+        "Move {Item} to {Location}",
+        "Switch {Item} to {Location}"
+      ],
+      "slots": [
+        {
+          "name": "Item",
+          "type": "LIST_OF_ITEMS",
+          "samples": []
+        },
+        {
+          "name": "Location",
+          "type": "LOCATION",
+          "samples": []
+        }
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "LIST_OF_ITEMS",
+      "values": [
+        {
+          "name": {
+            "value": "brush"
+          }
+        },
+        {
+          "name": {
+            "value": "scissors"
+          }
+        },
+        {
+          "name": {
+            "value": "door"
+          }
+        },
+        {
+          "name": {
+            "value": "notebook"
+          }
+        },
+        {
+          "name": {
+            "value": "necklace"
+          }
+        },
+        {
+          "name": {
+            "value": "chainlink fence"
+          }
+        },
+        {
+          "name": {
+            "value": "notepad"
+          }
+        },
+        {
+          "name": {
+            "value": "floor"
+          }
+        },
+        {
+          "name": {
+            "value": "dinner plates"
+          }
+        },
+        {
+          "name": {
+            "value": "blender"
+          }
+        },
+        {
+          "name": {
+            "value": "ceiling"
+          }
+        },
+        {
+          "name": {
+            "value": "cell phone"
+          }
+        },
+        {
+          "name": {
+            "value": "cd"
+          }
+        },
+        {
+          "name": {
+            "value": "towel"
+          }
+        },
+        {
+          "name": {
+            "value": "house"
+          }
+        },
+        {
+          "name": {
+            "value": "drum"
+          }
+        },
+        {
+          "name": {
+            "value": "tv"
+          }
+        },
+        {
+          "name": {
+            "value": "banana"
+          }
+        },
+        {
+          "name": {
+            "value": "yarn"
+          }
+        },
+        {
+          "name": {
+            "value": "bathmat"
+          }
+        },
+        {
+          "name": {
+            "value": "toenail"
+          }
+        },
+        {
+          "name": {
+            "value": "popsicle"
+          }
+        },
+        {
+          "name": {
+            "value": "eyeglasses"
+          }
+        },
+        {
+          "name": {
+            "value": "tree"
+          }
+        },
+        {
+          "name": {
+            "value": "patio"
+          }
+        },
+        {
+          "name": {
+            "value": "letter"
+          }
+        },
+        {
+          "name": {
+            "value": "pen"
+          }
+        },
+        {
+          "name": {
+            "value": "camera"
+          }
+        },
+        {
+          "name": {
+            "value": "gum"
+          }
+        },
+        {
+          "name": {
+            "value": "string"
+          }
+        },
+        {
+          "name": {
+            "value": "webkinz"
+          }
+        },
+        {
+          "name": {
+            "value": "mirror"
+          }
+        },
+        {
+          "name": {
+            "value": "soda can"
+          }
+        },
+        {
+          "name": {
+            "value": "sofa"
+          }
+        },
+        {
+          "name": {
+            "value": "pool"
+          }
+        },
+        {
+          "name": {
+            "value": "tile"
+          }
+        },
+        {
+          "name": {
+            "value": "kiwi"
+          }
+        },
+        {
+          "name": {
+            "value": "drawer"
+          }
+        },
+        {
+          "name": {
+            "value": "pots"
+          }
+        },
+        {
+          "name": {
+            "value": "stove"
+          }
+        },
+        {
+          "name": {
+            "value": "computer"
+          }
+        },
+        {
+          "name": {
+            "value": "oven"
+          }
+        },
+        {
+          "name": {
+            "value": "road signs"
+          }
+        },
+        {
+          "name": {
+            "value": "tree house"
+          }
+        },
+        {
+          "name": {
+            "value": "cups"
+          }
+        },
+        {
+          "name": {
+            "value": "plate"
+          }
+        },
+        {
+          "name": {
+            "value": "deck"
+          }
+        },
+        {
+          "name": {
+            "value": "doorframe"
+          }
+        },
+        {
+          "name": {
+            "value": "gasoline"
+          }
+        },
+        {
+          "name": {
+            "value": "ciggarette"
+          }
+        },
+        {
+          "name": {
+            "value": "box"
+          }
+        },
+        {
+          "name": {
+            "value": "pencil"
+          }
+        },
+        {
+          "name": {
+            "value": "paper clip"
+          }
+        },
+        {
+          "name": {
+            "value": "paper"
+          }
+        },
+        {
+          "name": {
+            "value": "kumquat"
+          }
+        },
+        {
+          "name": {
+            "value": "purse"
+          }
+        },
+        {
+          "name": {
+            "value": "toaster"
+          }
+        },
+        {
+          "name": {
+            "value": "dress"
+          }
+        },
+        {
+          "name": {
+            "value": "stereo"
+          }
+        },
+        {
+          "name": {
+            "value": "desk"
+          }
+        },
+        {
+          "name": {
+            "value": "glasses"
+          }
+        },
+        {
+          "name": {
+            "value": "strawberry"
+          }
+        },
+        {
+          "name": {
+            "value": "jar"
+          }
+        },
+        {
+          "name": {
+            "value": "shelf"
+          }
+        },
+        {
+          "name": {
+            "value": "blind"
+          }
+        },
+        {
+          "name": {
+            "value": "phone"
+          }
+        },
+        {
+          "name": {
+            "value": "stapler"
+          }
+        },
+        {
+          "name": {
+            "value": "comb"
+          }
+        },
+        {
+          "name": {
+            "value": "boat"
+          }
+        },
+        {
+          "name": {
+            "value": "wallet"
+          }
+        },
+        {
+          "name": {
+            "value": "mouse-pad"
+          }
+        },
+        {
+          "name": {
+            "value": "leaf"
+          }
+        },
+        {
+          "name": {
+            "value": "coke bottle"
+          }
+        },
+        {
+          "name": {
+            "value": "stick"
+          }
+        },
+        {
+          "name": {
+            "value": "railing"
+          }
+        },
+        {
+          "name": {
+            "value": "lightbulb"
+          }
+        },
+        {
+          "name": {
+            "value": "cloud"
+          }
+        },
+        {
+          "name": {
+            "value": "knife"
+          }
+        },
+        {
+          "name": {
+            "value": "flag"
+          }
+        },
+        {
+          "name": {
+            "value": "pin"
+          }
+        },
+        {
+          "name": {
+            "value": "lock"
+          }
+        },
+        {
+          "name": {
+            "value": "silverware"
+          }
+        },
+        {
+          "name": {
+            "value": "plane"
+          }
+        },
+        {
+          "name": {
+            "value": "television"
+          }
+        },
+        {
+          "name": {
+            "value": "apple"
+          }
+        },
+        {
+          "name": {
+            "value": "printer"
+          }
+        },
+        {
+          "name": {
+            "value": "guitar"
+          }
+        },
+        {
+          "name": {
+            "value": "ice cream"
+          }
+        },
+        {
+          "name": {
+            "value": "shampoo"
+          }
+        },
+        {
+          "name": {
+            "value": "hat"
+          }
+        },
+        {
+          "name": {
+            "value": "wire"
+          }
+        },
+        {
+          "name": {
+            "value": "sock "
+          }
+        },
+        {
+          "name": {
+            "value": "picture"
+          }
+        },
+        {
+          "name": {
+            "value": "crayon"
+          }
+        },
+        {
+          "name": {
+            "value": "gun"
+          }
+        },
+        {
+          "name": {
+            "value": "couch"
+          }
+        },
+        {
+          "name": {
+            "value": "painting"
+          }
+        },
+        {
+          "name": {
+            "value": "pans"
+          }
+        },
+        {
+          "name": {
+            "value": "jewelry"
+          }
+        },
+        {
+          "name": {
+            "value": "case"
+          }
+        },
+        {
+          "name": {
+            "value": "vaccume"
+          }
+        },
+        {
+          "name": {
+            "value": "remote control"
+          }
+        },
+        {
+          "name": {
+            "value": "spikes"
+          }
+        },
+        {
+          "name": {
+            "value": "speaker"
+          }
+        },
+        {
+          "name": {
+            "value": "fork"
+          }
+        },
+        {
+          "name": {
+            "value": "folder"
+          }
+        },
+        {
+          "name": {
+            "value": "envelope"
+          }
+        },
+        {
+          "name": {
+            "value": "clothes"
+          }
+        },
+        {
+          "name": {
+            "value": "lollypop"
+          }
+        },
+        {
+          "name": {
+            "value": "picture frame"
+          }
+        },
+        {
+          "name": {
+            "value": "carpet"
+          }
+        },
+        {
+          "name": {
+            "value": "book"
+          }
+        },
+        {
+          "name": {
+            "value": "watch"
+          }
+        },
+        {
+          "name": {
+            "value": "dog house"
+          }
+        },
+        {
+          "name": {
+            "value": "saucers"
+          }
+        },
+        {
+          "name": {
+            "value": "piano"
+          }
+        },
+        {
+          "name": {
+            "value": "toilet"
+          }
+        },
+        {
+          "name": {
+            "value": "telephone"
+          }
+        },
+        {
+          "name": {
+            "value": "bed"
+          }
+        },
+        {
+          "name": {
+            "value": "knives"
+          }
+        },
+        {
+          "name": {
+            "value": "light"
+          }
+        },
+        {
+          "name": {
+            "value": "mailbox"
+          }
+        },
+        {
+          "name": {
+            "value": "shoe"
+          }
+        },
+        {
+          "name": {
+            "value": "sundial"
+          }
+        },
+        {
+          "name": {
+            "value": "ice"
+          }
+        },
+        {
+          "name": {
+            "value": "cookie"
+          }
+        },
+        {
+          "name": {
+            "value": "orange"
+          }
+        },
+        {
+          "name": {
+            "value": "refrigerator"
+          }
+        },
+        {
+          "name": {
+            "value": "car"
+          }
+        },
+        {
+          "name": {
+            "value": "bus"
+          }
+        },
+        {
+          "name": {
+            "value": "ball"
+          }
+        },
+        {
+          "name": {
+            "value": "conditioner"
+          }
+        },
+        {
+          "name": {
+            "value": "train"
+          }
+        },
+        {
+          "name": {
+            "value": "spoon"
+          }
+        },
+        {
+          "name": {
+            "value": "shoes"
+          }
+        },
+        {
+          "name": {
+            "value": "bathtub"
+          }
+        },
+        {
+          "name": {
+            "value": "chair"
+          }
+        },
+        {
+          "name": {
+            "value": "rock"
+          }
+        },
+        {
+          "name": {
+            "value": "fridge"
+          }
+        },
+        {
+          "name": {
+            "value": "shower curtain"
+          }
+        },
+        {
+          "name": {
+            "value": "plaque"
+          }
+        },
+        {
+          "name": {
+            "value": "hairnet"
+          }
+        },
+        {
+          "name": {
+            "value": "cereal bowl"
+          }
+        },
+        {
+          "name": {
+            "value": "bottle"
+          }
+        },
+        {
+          "name": {
+            "value": "window frame"
+          }
+        },
+        {
+          "name": {
+            "value": "table"
+          }
+        },
+        {
+          "name": {
+            "value": "plastic bag"
+          }
+        },
+        {
+          "name": {
+            "value": "wristband"
+          }
+        },
+        {
+          "name": {
+            "value": "window"
+          }
+        },
+        {
+          "name": {
+            "value": "wallpaper"
+          }
+        },
+        {
+          "name": {
+            "value": "cape"
+          }
+        },
+        {
+          "name": {
+            "value": "vase"
+          }
+        },
+        {
+          "name": {
+            "value": "bike"
+          }
+        },
+        {
+          "name": {
+            "value": "plastic ware"
+          }
+        },
+        {
+          "name": {
+            "value": "disc"
+          }
+        }
+      ]
+    },
+    {
+      "name": "LOCATION",
+      "values": [
+        {
+          "name": {
+            "value": "in the bedroom"
+          }
+        },
+        {
+          "name": {
+            "value": "in the bathroom"
+          }
+        },
+        {
+          "name": {
+            "value": "in the hallway"
+          }
+        },
+        {
+          "name": {
+            "value": "in the closet"
+          }
+        },
+        {
+          "name": {
+            "value": "in the upstairs closet"
+          }
+        },
+        {
+          "name": {
+            "value": "in the hall closet"
+          }
+        },
+        {
+          "name": {
+            "value": "in the utility closet"
+          }
+        },
+        {
+          "name": {
+            "value": "in the bathroom closet"
+          }
+        },
+        {
+          "name": {
+            "value": "in the basement"
+          }
+        },
+        {
+          "name": {
+            "value": "in the attic"
+          }
+        },
+        {
+          "name": {
+            "value": "in the entryway"
+          }
+        },
+        {
+          "name": {
+            "value": "in the study"
+          }
+        },
+        {
+          "name": {
+            "value": "in the shed"
+          }
+        },
+        {
+          "name": {
+            "value": "in the garage"
+          }
+        },
+        {
+          "name": {
+            "value": "in the pantry"
+          }
+        },
+        {
+          "name": {
+            "value": "on the shelves"
+          }
+        },
+        {
+          "name": {
+            "value": "on the kitchen shelves"
+          }
+        },
+        {
+          "name": {
+            "value": "on the table"
+          }
+        },
+        {
+          "name": {
+            "value": "on the dining table"
+          }
+        },
+        {
+          "name": {
+            "value": "on the dining room tabl"
+          }
+        },
+        {
+          "name": {
+            "value": "on the balcony"
+          }
+        },
+        {
+          "name": {
+            "value": "on the porch"
+          }
+        },
+        {
+          "name": {
+            "value": "on the deck"
+          }
+        },
+        {
+          "name": {
+            "value": "on the armchair"
+          }
+        },
+        {
+          "name": {
+            "value": "on the couch"
+          }
+        },
+        {
+          "name": {
+            "value": "on the sofa"
+          }
+        },
+        {
+          "name": {
+            "value": "on the love seat"
+          }
+        },
+        {
+          "name": {
+            "value": "on the rocking chair"
+          }
+        },
+        {
+          "name": {
+            "value": "on the mantle"
+          }
+        },
+        {
+          "name": {
+            "value": "in the kitchen drawer"
+          }
+        },
+        {
+          "name": {
+            "value": "inside the kitchen drawer"
+          }
+        },
+        {
+          "name": {
+            "value": "in the junk drawer"
+          }
+        },
+        {
+          "name": {
+            "value": "inside the junk drawer"
+          }
+        },
+        {
+          "name": {
+            "value": "in the oven drawer"
+          }
+        },
+        {
+          "name": {
+            "value": "insider the oven drawer"
+          }
+        },
+        {
+          "name": {
+            "value": "in the refrigerator"
+          }
+        },
+        {
+          "name": {
+            "value": "inside the refrigerator"
+          }
+        },
+        {
+          "name": {
+            "value": "in the freeer"
+          }
+        },
+        {
+          "name": {
+            "value": "inside the freezer"
+          }
+        },
+        {
+          "name": {
+            "value": "in the deep freezer"
+          }
+        },
+        {
+          "name": {
+            "value": "in the garage refrigerator"
+          }
+        },
+        {
+          "name": {
+            "value": "inside the garage refrigerator"
+          }
+        },
+        {
+          "name": {
+            "value": "under the sink"
+          }
+        },
+        {
+          "name": {
+            "value": "inder the kitchen sink"
+          }
+        },
+        {
+          "name": {
+            "value": "under the bathroom sink"
+          }
+        },
+        {
+          "name": {
+            "value": "under the bed"
+          }
+        },
+        {
+          "name": {
+            "value": "under the master bed"
+          }
+        },
+        {
+          "name": {
+            "value": "under the couch"
+          }
+        }
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "id": "Elicit.Intent-AddItem.IntentSlot-Item",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "I didn't get the item, could you repeat that"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "AddItem",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "Item",
+            "type": "LIST_OF_ITEMS",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-AddItem.IntentSlot-Item"
+            }
+          },
+          {
+            "name": "Quantity",
+            "type": "AMAZON.NUMBER",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "DecrementQuantity",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "Item",
+            "type": "LIST_OF_ITEMS",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          },
+          {
+            "name": "Quantity",
+            "type": "AMAZON.NUMBER",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "IncrementQuantity",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "Item",
+            "type": "LIST_OF_ITEMS",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          },
+          {
+            "name": "Quantity",
+            "type": "AMAZON.NUMBER",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "QueryCreateTime",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "Item",
+            "type": "LIST_OF_ITEMS",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "QueryItem",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "Item",
+            "type": "LIST_OF_ITEMS",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "QueryLocation",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "Item",
+            "type": "LIST_OF_ITEMS",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "RemoveItem",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "Item",
+            "type": "LIST_OF_ITEMS",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      },
+      {
+        "name": "UpdateLocation",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "Item",
+            "type": "LIST_OF_ITEMS",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          },
+          {
+            "name": "Location",
+            "type": "LOCATION",
+            "elicitationRequired": false,
+            "confirmationRequired": false,
+            "prompts": {}
+          }
+        ]
+      }
+    ]
+  }
+}

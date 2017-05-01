@@ -1,7 +1,5 @@
 'use strict';
 
-const createItem = require('./../helperDelegates/createItem');
-
 module.exports = function(handler, table) {
 
     const slots = handler.event.request.intent.slots
@@ -16,7 +14,7 @@ module.exports = function(handler, table) {
                 })
         .then(function(resp) {
             if (resp == undefined) {
-              createItem(handler, table);
+                handler.emit('SetQuantity')
             } else {
               if (resp.quantity != undefined) {
                 baseQuantity = resp.quantity;

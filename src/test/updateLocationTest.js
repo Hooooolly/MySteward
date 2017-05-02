@@ -7,6 +7,7 @@ const ssmlWrap = require('./resources/ssmlWrap')
 const executor = require('./resources/alexaExecutor')
 const dynasty = require('dynasty')({});
 const sprintf = require("sprintf-js").sprintf
+const find = require('./resources/databaseWrappers').find
 
 const strings = languageStrings.strings.en.translation
 const stewardItems = dynasty.table('Steward_Items');
@@ -73,7 +74,7 @@ describe("Testing UpdateLocation intent", function() {
             expect(speechResponse.response.shouldEndSession).to.be.true
         })
          it("should have updated an item", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 expect(resp.location).not.to.be.undefined
                 expect(resp.location).to.be.string(testNewLocation)
@@ -112,7 +113,7 @@ describe("Testing UpdateLocation intent", function() {
             expect(speechResponse.response.shouldEndSession).to.be.true
         })
         it("should have updated an item", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 expect(resp.location).not.to.be.undefined
                 expect(resp.location).to.be.string(testNewLocation)

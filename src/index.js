@@ -2,9 +2,10 @@
 
 const Alexa = require('alexa-sdk');
 const dynasty = require('dynasty')({});
+const pluralize = require('pluralize');
 const languageStrings = require('./languageStrings');
 const setQuantity = require('./intentDelegates/setQuantity');
-const queryItem = require('./intentDelegates/queryItem');
+const queryQuantity = require('./intentDelegates/queryQuantity');
 const removeItem = require('./intentDelegates/removeItem');
 const queryCreateTime = require('./intentDelegates/queryCreateTime');
 const incrementQuantity = require('./intentDelegates/incrementQuantity')
@@ -21,7 +22,7 @@ const handlers = {
 
     'RemoveItem': function() { removeItem(this, stewardItems) },
 
-    'QueryItem': function() { queryItem(this, stewardItems) },
+    'QueryQuantity': function() { queryQuantity(this, stewardItems) },
 
 	'QueryCreateTime' : function() { queryCreateTime(this, stewardItems) },
 
@@ -64,6 +65,11 @@ exports.handler = (event, context) => {
     alexa.appId = APP_ID;
     // To enable string internationalization (i18n) features, set a resources object.
     alexa.resources = languageStrings.strings;
+
+    // modify event to singualar items
+    if (event.request.intent.slots.Item.value) {
+        event.request.intent.slots.Item.value = pluralize.singular(event.request.intent.slots.Item.value)
+    }
     alexa.registerHandlers(handlers);
     alexa.execute();
 };

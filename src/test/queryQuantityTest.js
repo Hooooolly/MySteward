@@ -12,7 +12,8 @@ const strings = languageStrings.strings.en.translation
 const stewardItems = dynasty.table('Steward_Items');
 
 const testUserId = 'test'
-const testItemName = 'eggs'
+const testItemNamePlural = 'boxes'
+const testItemNameSingular = 'box'
 const testQuantity = 5
 
 const blankInput =
@@ -28,7 +29,7 @@ const blankInput =
         "type": "IntentRequest",
         "locale": "en-US",
         "intent": {
-            "name": "QueryItem",
+            "name": "QueryQuantity",
             "slots": {
                 "Item": {"name": "Item"}
             }
@@ -46,8 +47,8 @@ describe("Testing QueryItem intent", function() {
 
         before(function(done){
             var input = JSON.parse(JSON.stringify(blankInput))
-            input.request.intent.slots.Item.value = testItemName
-            const testItem = {userId: testUserId, itemName: testItemName, quantity: currentQuantity};
+            input.request.intent.slots.Item.value = testItemNamePlural
+            const testItem = {userId: testUserId, itemName: testItemNamePlural, quantity: currentQuantity};
             executor.insertItemThenExecute(stewardItems, testItem, input, function(err, resp) {
                 if (err) { console.log(err); speechError = err}
                 else { speechResponse = resp }
@@ -60,7 +61,7 @@ describe("Testing QueryItem intent", function() {
         })
 
         it("should have an answer with quantity", function() {
-            var expected = sprintf(strings.QUANTITY_NONZERO, currentQuantity, testItemName.toString())
+            var expected = sprintf(strings.QUANTITY_NONZERO, currentQuantity, testItemNameSingular)
             expect(speechResponse.response.outputSpeech.ssml).to.be.string(ssmlWrap(expected))
         })
 
@@ -77,8 +78,8 @@ describe("Testing QueryItem intent", function() {
 
         before(function(done){
             var input = JSON.parse(JSON.stringify(blankInput))
-            input.request.intent.slots.Item.value = testItemName
-            const testItem = {userId: testUserId, itemName: testItemName, quantity: currentQuantity};
+            input.request.intent.slots.Item.value = testItemNamePlural
+            const testItem = {userId: testUserId, itemName: testItemNamePlural, quantity: currentQuantity};
             executor.insertItemThenExecute(stewardItems, testItem, input, function(err, resp) {
                 if (err) { console.log(err); speechError = err}
                 else { speechResponse = resp }
@@ -91,7 +92,7 @@ describe("Testing QueryItem intent", function() {
         })
 
         it("should have an answer with quantity", function() {
-            var expected = sprintf(strings.QUANTITY_ZERO, testItemName)
+            var expected = sprintf(strings.QUANTITY_ZERO, testItemNamePlural)
             expect(speechResponse.response.outputSpeech.ssml).to.be.string(ssmlWrap(expected))
         })
 
@@ -108,8 +109,8 @@ describe("Testing QueryItem intent", function() {
 
         before(function(done){
             var input = JSON.parse(JSON.stringify(blankInput))
-            input.request.intent.slots.Item.value = testItemName
-            const testItem = {userId: testUserId, itemName: testItemName, quantity: currentQuantity};
+            input.request.intent.slots.Item.value = testItemNamePlural
+            const testItem = {userId: testUserId, itemName: testItemNamePlural, quantity: currentQuantity};
             executor.insertItemThenExecute(stewardItems, testItem, input, function(err, resp) {
                 if (err) { console.log(err); speechError = err}
                 else { speechResponse = resp }
@@ -122,7 +123,7 @@ describe("Testing QueryItem intent", function() {
         })
 
         it("should have an answer with quantity", function() {
-            var expected = sprintf(strings.QUANTITY_NONZERO, currentQuantity, testItemName.toString())
+            var expected = sprintf(strings.QUANTITY_NONZERO, currentQuantity, testItemNamePlural.toString())
             expect(speechResponse.response.outputSpeech.ssml).to.be.string(ssmlWrap(expected))
         })
 
@@ -138,8 +139,8 @@ describe("Testing QueryItem intent", function() {
 
         before(function(done){
             var input = JSON.parse(JSON.stringify(blankInput))
-            input.request.intent.slots.Item.value = testItemName
-            const testItem = {userId: testUserId, itemName: testItemName};
+            input.request.intent.slots.Item.value = testItemNamePlural
+            const testItem = {userId: testUserId, itemName: testItemNamePlural};
             executor.insertItemThenExecute(stewardItems, testItem, input, function(err, resp) {
                 if (err) { console.log(err); speechError = err}
                 else { speechResponse = resp }
@@ -152,7 +153,7 @@ describe("Testing QueryItem intent", function() {
         })
 
         it("should have an answer with quantity", function() {
-            var expected = sprintf(strings.QUANTITY_ZERO, testItemName)
+            var expected = sprintf(strings.QUANTITY_ZERO, testItemNamePlural)
             expect(speechResponse.response.outputSpeech.ssml).to.be.string(ssmlWrap(expected))
         })
 
@@ -169,8 +170,8 @@ describe("Testing QueryItem intent", function() {
 
         before(function(done){
             var input = JSON.parse(JSON.stringify(blankInput))
-            input.request.intent.slots.Item.value = testItemName
-            const testItem = {hash: testUserId, range: testItemName};
+            input.request.intent.slots.Item.value = testItemNamePlural
+            const testItem = {hash: testUserId, range: testItemNamePlural};
             executor.deleteItemThenExecute(stewardItems, testItem, input, function(err, resp) {
                 if (err) { console.log(err); speechError = err}
                 else { speechResponse = resp }
@@ -183,7 +184,7 @@ describe("Testing QueryItem intent", function() {
         })
 
         it("should have a regular message with quantity 0", function() {
-            var expected = sprintf(strings.QUANTITY_ZERO, testItemName)
+            var expected = sprintf(strings.QUANTITY_ZERO, testItemNamePlural)
             expect(speechResponse.response.outputSpeech.ssml).to.be.string(ssmlWrap(expected))
         })
 
@@ -200,7 +201,7 @@ describe("Testing QueryItem intent", function() {
 
         before(function(done){
             var input = JSON.parse(JSON.stringify(blankInput))
-            const testItem = {userId: testUserId, itemName: testItemName, quantity: currentQuantity};
+            const testItem = {userId: testUserId, itemName: testItemNamePlural, quantity: currentQuantity};
             executor.insertItemThenExecute(stewardItems, testItem, input, function(err, resp) {
                 if (err) { console.log(err); speechError = err}
                 else { speechResponse = resp }

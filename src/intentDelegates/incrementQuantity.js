@@ -20,7 +20,7 @@ module.exports = function(handler, table) {
                 baseQuantity = resp.quantity;
               }
               if (slots.Quantity && slots.Quantity.value) {
-                addedQuantity = slots.Quantity.value;
+                addedQuantity = parseInt(slots.Quantity.value);
               } else if (slots.Quantity.value == 0) {
                 addedQuantity = 0;
               }

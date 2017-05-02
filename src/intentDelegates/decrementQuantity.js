@@ -1,7 +1,5 @@
 'use strict';
 
-const removeItem = require('./removeItem');
-
 module.exports = function(handler, table) {
 
     const slots = handler.event.request.intent.slots
@@ -21,14 +19,14 @@ module.exports = function(handler, table) {
                 baseQuantity = resp.quantity;
               }
               if (slots.Quantity && slots.Quantity.value) {
-                removedQuantity = slots.Quantity.value;
+                removedQuantity = parseInt(slots.Quantity.value);
               }
               else if (slots.Quantity.value == 0) {
                 removedQuantity = 0;
               }
               var finalQuantity = eval(baseQuantity) - eval(removedQuantity);
               if (finalQuantity <= 0) {
-                removeItem(handler, table);
+                handler.emit('RemoveItem')
               } else {
                 table
                 .update({hash: handler.event.session.user.userId, range: slots.Item.value.toLowerCase()}, { quantity: finalQuantity })

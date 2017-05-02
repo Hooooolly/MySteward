@@ -6,9 +6,11 @@ const languageStrings = require('../languageStrings')
 const ssmlWrap = require('./resources/ssmlWrap')
 const executor = require('./resources/alexaExecutor')
 const dynasty = require('dynasty')({});
+const pluralize = require('pluralize');
 
 const strings = languageStrings.strings.en.translation
 const stewardItems = dynasty.table('Steward_Items');
+const find = require('./resources/databaseWrappers').find
 
 const testUserId = 'test'
 const testItemName = 'eggs'
@@ -71,7 +73,7 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have inserted an item", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 insertedItem = resp
             }).catch(function(err) {
@@ -87,6 +89,9 @@ describe("Testing SetQuantity intent", function() {
             expect(insertedItem.createTime).not.to.be.null
         })
 
+        it("should have inserted an item with singular name", function() {
+            expect(insertedItem.itemName).to.be.string(pluralize.singular(testItemName))
+        })
     })
 
     describe("valid input without location create", function() {
@@ -119,7 +124,7 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have inserted an item", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 insertedItem = resp
             }).catch(function(err) {
@@ -135,6 +140,9 @@ describe("Testing SetQuantity intent", function() {
             expect(insertedItem.createTime).not.to.be.null
         })
 
+        it("should have inserted an item with singular name", function() {
+            expect(insertedItem.itemName).to.be.string(pluralize.singular(testItemName))
+        })
     })
 
     describe("valid input with location create", function() {
@@ -168,7 +176,7 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have inserted an item", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 insertedItem = resp
             }).catch(function(err) {
@@ -182,6 +190,10 @@ describe("Testing SetQuantity intent", function() {
 
         it("inserted item shoudl have creation timestamp", function() {
             expect(insertedItem.createTime).not.to.be.null
+        })
+
+        it("should have inserted an item with singular name", function() {
+            expect(insertedItem.itemName).to.be.string(pluralize.singular(testItemName))
         })
     })
 
@@ -216,7 +228,7 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have inserted an item", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 insertedItem = resp
             }).catch(function(err) {
@@ -230,6 +242,10 @@ describe("Testing SetQuantity intent", function() {
 
         it("inserted item shoudl have creation timestamp", function() {
             expect(insertedItem.createTime).not.to.be.null
+        })
+
+        it("should have inserted an item with singular name", function() {
+            expect(insertedItem.itemName).to.be.string(pluralize.singular(testItemName))
         })
     })
 
@@ -264,7 +280,7 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have inserted an item", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 insertedItem = resp
             }).catch(function(err) {
@@ -282,6 +298,10 @@ describe("Testing SetQuantity intent", function() {
 
         it("inserted item shoudl have creation timestamp", function() {
             expect(insertedItem.createTime).not.to.be.null
+        })
+
+        it("should have inserted an item with singular name", function() {
+            expect(insertedItem.itemName).to.be.string(pluralize.singular(testItemName))
         })
     })
 
@@ -316,7 +336,7 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have inserted an item", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 insertedItem = resp
             }).catch(function(err) {
@@ -334,6 +354,10 @@ describe("Testing SetQuantity intent", function() {
 
         it("inserted item shoudl have creation timestamp", function() {
             expect(insertedItem.createTime).not.to.be.null
+        })
+
+        it("should have inserted an item with singular name", function() {
+            expect(insertedItem.itemName).to.be.string(pluralize.singular(testItemName))
         })
     })
 
@@ -365,7 +389,7 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should not have inserted to the database", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 expect(resp).to.be.undefined
             }).catch(function(err) {
@@ -373,4 +397,5 @@ describe("Testing SetQuantity intent", function() {
             })
         })
     })
+
 })

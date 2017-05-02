@@ -9,6 +9,7 @@ const dynasty = require('dynasty')({});
 
 const strings = languageStrings.strings.en.translation
 const stewardItems = dynasty.table('Steward_Items');
+const find = require('./resources/databaseWrappers').find
 
 const testUserId = 'test'
 const testItemName = 'eggs'
@@ -68,7 +69,7 @@ describe("Testing RemoveItem intent", function() {
         })
 
         it("should have remove item from database", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 expect(resp).to.be.undefined;
             }).catch(function(err) {
@@ -134,7 +135,7 @@ describe("Testing RemoveItem intent", function() {
         })
 
         it("should not have removed from the database", function() {
-            return stewardItems.find({hash: testUserId, range: testItemName})
+            return find(stewardItems, {hash: testUserId, range: testItemName})
             .then(function(resp) {
                 expect(resp).not.to.be.undefined
             }).catch(function(err) {

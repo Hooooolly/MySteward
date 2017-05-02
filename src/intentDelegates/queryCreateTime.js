@@ -1,5 +1,7 @@
 'use strict';
 
+const pluralize = require('pluralize');
+
 module.exports = function(handler, table) {
 
     const slots = handler.event.request.intent.slots
@@ -10,13 +12,16 @@ module.exports = function(handler, table) {
                     range: slots.Item.value
                     })
             .then(function(resp) {
+                const pluralName = pluralize(slots.Item.value)
+
                 if (resp != undefined && resp.createTime != undefined) {
 					// rounding accounts for daylight savings
 					var timeDiff = Math.round((Date.now() - resp.createTime)/(1000*60*60*24))
-					handler.emit(':tell', handler.t('TIME_MESSAGE', slots.Item.value.toLowerCase(), timeDiff));
+					handler.emit(':tell', handler.t('TIME_MESSAGE', pluralName, timeDiff));
                 }
                 else {
-					handler.emit(':tell', handler.t('NOTIME_MESSAGE', slots.Item.value.toLowerCase()));
+
+					handler.emit(':tell', handler.t('NOTIME_MESSAGE', pluralName));
                 }
             })
             .catch(function(err) {

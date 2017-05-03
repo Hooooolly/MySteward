@@ -33,7 +33,8 @@ const blankInput =
             "slots": {
                 "Item": {"name": "Item"}
             }
-        }
+        },
+        "dialogState": "COMPLETED"
     },
     "version": "1.0"
 }
@@ -69,7 +70,7 @@ describe("Testing QueryCreateTime intent", function() {
             expect(speechResponse.response.shouldEndSession).to.be.true
         })
     })
-	
+
 	describe("valid input with existing item and previous time", function() {
         var speechResponse = null
         var speechError = null

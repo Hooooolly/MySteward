@@ -32,7 +32,8 @@ const blankInput =
             "slots": {
                 "Item": {"name": "Item"}
             }
-        }
+        },
+        "dialogState": "COMPLETED"
     },
     "version": "1.0"
 }
@@ -59,8 +60,8 @@ describe("Testing QueryLocation intent", function() {
         })
 
         it("should have an answer with quantity", function() {
-            var expected = sprintf(strings.LOCATION_MESSAGE, testLocation)
-            expect(speechResponse.response.outputSpeech.ssml).to.be.string(ssmlWrap(expected))
+            var expected = [sprintf(strings.LOCATION_MESSAGE_PLURAL, testLocation), sprintf(strings.LOCATION_MESSAGE_SINGULAR, testLocation)]
+            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(expected.map(ssmlWrap))
         })
 
         it("should end the alexa session", function() {

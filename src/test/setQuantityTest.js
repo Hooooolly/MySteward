@@ -36,7 +36,8 @@ const blankInput =
                 "Quantity": {"name": "Quantity"},
                 "Location": {"name": "Location"}
             }
-        }
+        },
+        "dialogState": "COMPLETED"
     },
     "version": "1.0"
 }

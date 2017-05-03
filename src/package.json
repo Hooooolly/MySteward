@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/cwlucas41/MySteward#readme",
   "dependencies": {
-    "alexa-sdk": "^1.0.7",
+    "alexa-sdk": "^1.0.9",
     "dynasty": "^0.2.7",
     "pluralize": "^4.0.0"
   },

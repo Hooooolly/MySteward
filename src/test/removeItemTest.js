@@ -32,7 +32,8 @@ const blankInput =
             "slots": {
                 "Item": {"name": "Item"},
             }
-        }
+        },
+        "dialogState": "COMPLETED"
     },
     "version": "1.0"
 }

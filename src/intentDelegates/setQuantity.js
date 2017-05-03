@@ -14,7 +14,7 @@ module.exports = function(handler, table) {
             if (resp == undefined) {
                 var record = {
                     userId: handler.event.session.user.userId,
-                    createTime: Math.floor(Date.now() / 1000)
+                    createTime: Date.now()
                 }
 
                 const slots = handler.event.request.intent.slots

@@ -11,7 +11,12 @@ module.exports = function(handler, table) {
                     })
             .then(function(resp) {
                 if (resp != undefined && resp.location != undefined) {
-                  handler.emit(':tell', handler.t('LOCATION_MESSAGE', resp.location));
+                  if (slots.Item.value != slots.Item.original) {
+                      handler.emit(':tell', handler.t('LOCATION_MESSAGE_PLURAL', resp.location));
+                  }
+                  else {
+                      handler.emit(':tell', handler.t('LOCATION_MESSAGE_SINGULAR', resp.location));
+                  }
                 }
                 else {
                   handler.emit(':tell', handler.t('NO_LOCATION_MESSAGE'));

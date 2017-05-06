@@ -1,11 +1,14 @@
 'use strict';
 
+const pluralize = require('pluralize');
+
 const expect = require('chai').expect;
 const assert = require('chai').assert;
 const languageStrings = require('../languageStrings')
 const ssmlWrap = require('./resources/ssmlWrap')
 const executor = require('./resources/alexaExecutor')
 const dynasty = require('dynasty')({});
+const sprintf = require("sprintf-js").sprintf
 
 const find = require('./resources/databaseWrappers').find
 const strings = languageStrings.strings.en.translation
@@ -62,7 +65,8 @@ describe("Testing IncrementQuantity intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+          const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, testQuantity + 1, testItemName));
+          return expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected);
         })
 
         it("should end the alexa session", function() {
@@ -108,7 +112,8 @@ describe("Testing IncrementQuantity intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+          const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, randomQuant + testQuantity, testItemName));
+          return expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected);
         })
 
         it("should end the alexa session", function() {
@@ -152,7 +157,8 @@ describe("Testing IncrementQuantity intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+          const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, testQuantity, pluralize.singular(testItemName)));
+          return expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected);
         })
 
         it("should end the alexa session", function() {

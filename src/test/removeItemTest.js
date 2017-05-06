@@ -6,6 +6,8 @@ const languageStrings = require('../languageStrings')
 const ssmlWrap = require('./resources/ssmlWrap')
 const executor = require('./resources/alexaExecutor')
 const dynasty = require('dynasty')({});
+const pluralize = require('pluralize');
+const sprintf = require("sprintf-js").sprintf
 
 const strings = languageStrings.strings.en.translation
 const stewardItems = dynasty.table('Steward_Items');
@@ -39,7 +41,6 @@ const blankInput =
 }
 
 describe("Testing RemoveItem intent", function() {
-    //no user id
 
     describe("remove item that is there", function() {
         var speechResponse = null
@@ -61,7 +62,8 @@ describe("Testing RemoveItem intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+          var expected = ssmlWrap(sprintf(strings.REMOVE_MESSAGE, testItemName))
+          expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected)
         })
 
         it("should end the alexa session", function() {
@@ -99,7 +101,8 @@ describe("Testing RemoveItem intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+          var expected = ssmlWrap(sprintf(strings.REMOVE_MESSAGE, testItemName))
+          expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected)
         })
 
         it("should end the alexa session", function() {

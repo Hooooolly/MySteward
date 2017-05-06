@@ -63,7 +63,8 @@ describe("Testing DecrementQuantity intent", function() {
       })
 
       it("should have a message saying there aren't any of the item to remove", function() {
-        expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+        const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, testQuantity - 1, testItemName));
+        return expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected);
       })
 
       it("should end the alexa session", function() {
@@ -96,7 +97,8 @@ describe("Testing DecrementQuantity intent", function() {
       })
 
       it("should have an affirmative message", function() {
-          expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+        const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, 2, testItemName));
+        return expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected);
       })
 
       it("should end the alexa session", function() {
@@ -138,10 +140,6 @@ describe("Testing DecrementQuantity intent", function() {
           expect(speechError).to.be.null
       })
 
-      it("should have an affirmative message", function() {
-          expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
-      })
-
       it("should end the alexa session", function() {
           expect(speechResponse.response.shouldEndSession).not.to.be.null
           expect(speechResponse.response.shouldEndSession).to.be.true
@@ -175,10 +173,6 @@ describe("Testing DecrementQuantity intent", function() {
 
       it('should not have errored',function() {
           expect(speechError).to.be.null
-      })
-
-      it("should have an affirmative message", function() {
-          expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
       })
 
       it("should end the alexa session", function() {
@@ -218,7 +212,8 @@ describe("Testing DecrementQuantity intent", function() {
       })
 
       it("should have an affirmative message", function() {
-          expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+        const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, testQuantity, testItemName));
+        return expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected);
       })
 
       it("should end the alexa session", function() {

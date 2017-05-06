@@ -6,8 +6,9 @@ const languageStrings = require('../languageStrings')
 const ssmlWrap = require('./resources/ssmlWrap')
 const executor = require('./resources/alexaExecutor')
 const dynasty = require('dynasty')({});
-const sprintf = require("sprintf-js").sprintf
 const find = require('./resources/databaseWrappers').find
+const pluralize = require('pluralize');
+const sprintf = require("sprintf-js").sprintf
 
 const strings = languageStrings.strings.en.translation
 const stewardItems = dynasty.table('Steward_Items');
@@ -67,8 +68,9 @@ describe("Testing UpdateLocation intent", function() {
         })
 
        it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
-        })
+         var expected = [sprintf(strings.MOVE_MESSAGE_PLURAL, pluralize(testItemName), testNewLocation), sprintf(strings.MOVE_MESSAGE_SINGULAR, pluralize.singular(testItemName), testNewLocation)]
+         expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(expected.map(ssmlWrap))
+       })
 
         it("should end the alexa session", function() {
             expect(speechResponse.response.shouldEndSession).not.to.be.null
@@ -106,8 +108,9 @@ describe("Testing UpdateLocation intent", function() {
         })
 
        it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
-        })
+         var expected = [sprintf(strings.MOVE_MESSAGE_PLURAL, pluralize(testItemName), testNewLocation), sprintf(strings.MOVE_MESSAGE_SINGULAR, pluralize.singular(testItemName), testNewLocation)]
+         expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(expected.map(ssmlWrap))
+       })
 
         it("should end the alexa session", function() {
             expect(speechResponse.response.shouldEndSession).not.to.be.null

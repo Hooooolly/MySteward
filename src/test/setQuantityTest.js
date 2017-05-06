@@ -7,6 +7,7 @@ const ssmlWrap = require('./resources/ssmlWrap')
 const executor = require('./resources/alexaExecutor')
 const dynasty = require('dynasty')({});
 const pluralize = require('pluralize');
+const sprintf = require("sprintf-js").sprintf
 
 const strings = languageStrings.strings.en.translation
 const stewardItems = dynasty.table('Steward_Items');
@@ -65,7 +66,8 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+          const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, 1, pluralize.singular(testItemName)));
+          return expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected);
         })
 
         it("should end the alexa session", function() {
@@ -116,7 +118,8 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+          const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, 1, pluralize.singular(testItemName)));
+          return expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected);
         })
 
         it("should end the alexa session", function() {
@@ -168,7 +171,8 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+            const expected = ssmlWrap(sprintf(strings.QUANTITY_LOCATION_UPDATE, 1, pluralize.singular(testItemName), testLocation));
+            expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected)
         })
 
         it("should end the alexa session", function() {
@@ -219,8 +223,9 @@ describe("Testing SetQuantity intent", function() {
             expect(speechError).to.be.null
         })
 
-        it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+        it("should have an update message", function() {
+            const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, testQuantity, testItemName));
+            return expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected);
         })
 
         it("should end the alexa session", function() {
@@ -272,7 +277,8 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+          const expected = ssmlWrap(sprintf(strings.QUANTITY_LOCATION_UPDATE, 1, pluralize.singular(testItemName), testLocation));
+          expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected)
         })
 
         it("should end the alexa session", function() {
@@ -293,8 +299,8 @@ describe("Testing SetQuantity intent", function() {
             expect(insertedItem.location).to.be.string(testLocation)
         })
 
-        it("should not have modified existing quantity", function() {
-            expect(insertedItem.quantity).to.be.equal(testQuantity - 1)
+        it("should not set quantity to one", function() {
+            expect(insertedItem.quantity).to.be.equal(1)
         })
 
         it("inserted item shoudl have creation timestamp", function() {
@@ -328,7 +334,8 @@ describe("Testing SetQuantity intent", function() {
         })
 
         it("should have an affirmative message", function() {
-            expect(speechResponse.response.outputSpeech.ssml).to.be.oneOf(strings.AFFIRMATIVE_MESSAGE.map(ssmlWrap))
+          const expected = ssmlWrap(sprintf(strings.QUANTITY_UPDATE, testQuantity, testItemName));
+          expect(speechResponse.response.outputSpeech.ssml).to.be.equal(expected)
         })
 
         it("should end the alexa session", function() {

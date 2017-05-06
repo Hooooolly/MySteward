@@ -15,7 +15,12 @@ module.exports = function(handler, table) {
                             range: slots.Item.value
                             }, {location: slots.Location.value})
                     .then(function(resp) {
-                        handler.emit('Affirmative');
+                      if (slots.Item.value != slots.Item.original) {
+                          handler.emit(':tell', handler.t('MOVE_MESSAGE_PLURAL', slots.Item.original, slots.Location.value));
+                      }
+                      else {
+                          handler.emit(':tell', handler.t('MOVE_MESSAGE_SINGULAR', slots.Item.original, slots.Location.value));
+                      }
                     })
                     .catch(function(err) {
                         console.log(err);

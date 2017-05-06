@@ -1,5 +1,7 @@
 'use strict';
 
+const pluralize = require('pluralize');
+
 module.exports = function(handler, table) {
 
     const slots = handler.event.request.intent.slots
@@ -31,7 +33,8 @@ module.exports = function(handler, table) {
                 table
                 .update({hash: handler.event.session.user.userId, range: slots.Item.value.toLowerCase()}, { quantity: finalQuantity })
                 .then(function(resp) {
-                    handler.emit('Affirmative');
+                    var response = handler.t('QUANTITY_UPDATE', finalQuantity, pluralize(slots.Item.value, finalQuantity))
+                    handler.emit(':tell', response);
                 })
                 .catch(function(err) {
                     console.log(err);

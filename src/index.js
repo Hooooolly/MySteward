@@ -58,12 +58,6 @@ const handlers = {
     updateLocation(this, stewardItems)
   },
 
-  'Affirmative': function() {
-    const responses = this.t('AFFIRMATIVE_MESSAGE');
-    const idx = Math.floor(Math.random() * responses.length);
-    this.emit(':tell', responses[idx]);
-  },
-
   'Error': function() {
     this.emit(':tell', this.t('ERROR_MESSAGE'))
   },
@@ -91,7 +85,7 @@ exports.handler = (event, context) => {
   alexa.resources = languageStrings.strings;
 
   // modify event to singualar items
-  if (event.request.intent.slots.Item.value && event.session.new) {
+  if (event.request.intent.slots.Item.value && event.request.dialogState === "COMPLETED") {
     event.request.intent.slots.Item.original = event.request.intent.slots.Item.value
     event.request.intent.slots.Item.value = pluralize.singular(event.request.intent.slots.Item.value)
   }

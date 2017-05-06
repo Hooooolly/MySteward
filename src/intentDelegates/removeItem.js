@@ -14,7 +14,7 @@ module.exports = function(handler, table) {
         table
         .remove(record)
         .then(function(resp) {
-            handler.emit('Affirmative');
+          handler.emit(':tell', handler.t('REMOVE_MESSAGE', slots.Item.original));
         })
         .catch(function(err) {
             console.log(err);

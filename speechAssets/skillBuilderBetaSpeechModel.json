@@ -29,7 +29,16 @@
         "I used {Quantity} of the {Item}",
         "I sold {Quantity} of the {Item}",
         "I lost {Quantity} of the {Item} ",
-        "add {Quantity} more {Item}"
+        "remove a {Item} ",
+        "I used a {Item} ",
+        "I sold a {Item} ",
+        "I lost a {Item}",
+        "I ate {Quantity} {Item} ",
+        "I drank {Quantity} {Item} ",
+        "I ate {Quantity} of my {Item}",
+        "I ate {Quantity}  of the {Item} ",
+        "I drank {Quantity} of the {Item} ",
+        "I drank {Quantity} of my {Item} "
       ],
       "slots": [
         {
@@ -233,7 +242,9 @@
         "I am out",
         "There are none left",
         "I ran out",
-        "To remove it"
+        "To remove it",
+        "I ate all my {Item} ",
+        "I drank all my {Item} "
       ],
       "slots": [
         {
